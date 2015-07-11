@@ -13,7 +13,7 @@
 -(void) printArray:(NSMutableArray *)array1  andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction;
 @property (nonatomic, assign) ViewController *_aViewController;
 
-+ (void)updatedisplay:(NSMutableArray *)array1  andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction;
+//+ (void)updatedisplay:(NSMutableArray *)array1  andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction;
 
 
 

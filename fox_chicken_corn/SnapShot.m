@@ -10,7 +10,7 @@
 
 @implementation SnapShot
 
--(void)recordCurrentStateOfArray:(NSMutableArray *)array1 length:(int)length1 andArray:(NSMutableArray *)array2 length:(int)length2{
+-(void)recordCurrentStateOfArray:(NSMutableArray *)array1 andArray:(NSMutableArray *)array2{
     
     if(recordArray1 == nil && recordArray2 == nil){
         recordArray1 = [[NSMutableArray alloc] init];
@@ -20,13 +20,13 @@
     
     [self wipe];
     
-    if(length1!=0){
-        [recordArray1 addObjectsFromArray:array1];
-    }
     
-    if(length2!=0){
-        [recordArray2 addObjectsFromArray:array2];
-    }
+    [recordArray1 addObjectsFromArray:array1];
+    
+    
+    
+    [recordArray2 addObjectsFromArray:array2];
+    
     
     
 }

@@ -11,11 +11,8 @@
 @implementation GameLogic{
     ValidMove *moveValidation;
     SnapShot *stateTracker;
-    NSMutableArray *array1;
-    NSMutableArray *array2;
-    NSString *container;
-    int index;
-    
+    Printer *printHandler;
+        
 }
 
 -(instancetype)initGame{
@@ -23,50 +20,47 @@
     if(self =[self init]){
         moveValidation = [[ValidMove alloc] init];
         stateTracker = [[SnapShot alloc] init];
-        array1 = [[NSMutableArray alloc] initWithObjects:@"1",@"2", @"3", nil];
-        array2 = [[NSMutableArray alloc] init];
-        container = @"";
-        index =1;
-        [self.printHandler printArray:array1 andArray:array2 andBoat:container direction:index];
-
+        printHandler = [[Printer alloc] init];
+        
     }
     
     return self;
 }
 
 
--(void)play{
+-(void)playWithIndex:(int)index {
     
     
-    [stateTracker recordCurrentStateOfArray:array1 length:(int)array1.count andArray:array2 length:(int)array2.count];
-    
-    while(array2.count!=3){
+    [stateTracker recordCurrentStateOfArray:self.array1 andArray:self.array2];
         if(index==1){
-            for(int i = 0; i <= array1.count; i++ ){
-                container = [NSString stringWithFormat:@""];
+            for(int i = 0; i <= self.array1.count; i++ ){
+                self.container = [NSString stringWithFormat:@""];
                 
-                if(i==array1.count){
+                if(i==self.array1.count){
                     
-                    if( [moveValidation isValidArray:array1 length:(int)array1.count secondArray:array2 length:(int)array2.count index:index]){
-                        [self.printHandler printArray:array1 andArray:array2 andBoat:container direction:index];
+                    if( [moveValidation isValidArray:self.array1 length:self.array1.count secondArray:self.array2 length:self.array2.count index:index]){
+                        
+                        [printHandler printArray:self.array1 andArray:self.array2 andBoat:self.container direction:index];
                         break;
                     }
                 }
                 
                 else{
                     
-                    container = [NSString stringWithFormat:@"%@",[array1 objectAtIndex:i]];
+                    self.container = [NSString stringWithFormat:@"%@",[self.array1 objectAtIndex:i]];
                     
-                    [array1 removeObjectAtIndex:i];
+                    [self.array1 removeObjectAtIndex:i];
                     
-                    if([moveValidation isValidArray:array1 length:(int)array1.count secondArray:array2 length:(int)array2.count index:index]){
-                        [array2 addObject:[NSString stringWithString:container]];
-                        [stateTracker recordCurrentStateOfArray:array1 length:(int)array1.count andArray:array2 length:(int)array2.count];
-                        [self.printHandler printArray:array1 andArray:array2 andBoat:container direction:index];
+                    if([moveValidation isValidArray:self.array1 length:self.array1.count secondArray:self.array2 length:self.array2.count index:index]){
+                        
+                        [self.array2 addObject:[NSString stringWithString:self.container]];
+                        [stateTracker recordCurrentStateOfArray:self.array1 andArray:self.array2];
+                        [printHandler printArray:self.array1 andArray:self.array2 andBoat:self.container direction:index];
                         break;
                     }
                     else{
-                        [stateTracker reloadWorkingStateOfArray:array1 andArray:array2];
+                        
+                        [stateTracker reloadWorkingStateOfArray:self.array1 andArray:self.array2];
                         continue;
                     }
                     
@@ -78,32 +72,33 @@
         
         
         if(index==0){
-            for(int i =0; i <= array2.count ; i++ ){
-                container = [NSString stringWithFormat:@""];
+            for(int i =0; i <= self.array2.count ; i++ ){
+                self.container = [NSString stringWithFormat:@""];
                 
                 if(i==0){
                     
-                    if( [moveValidation isValidArray:array1 length:(int)array1.count secondArray:array2 length:(int)array2.count index:index]){
-                        [self.printHandler printArray:array1 andArray:array2 andBoat:container direction:index];
+                    if( [moveValidation isValidArray:self.array1 length:self.array1.count secondArray:self.array2 length:self.array2.count index:index]){
+                        
+                        [printHandler printArray:self.array1 andArray:self.array2 andBoat:self.container direction:index];
                         break;
                     }
                 }
                 
                 else{
                     
-                    container = [NSString stringWithFormat:@"%@",[array2 objectAtIndex:i-1]];
+                    self.container = [NSString stringWithFormat:@"%@",[self.array2 objectAtIndex:i-1]];
                     
-                    [array2 removeObjectAtIndex:i-1];
+                    [self.array2 removeObjectAtIndex:i-1];
                     
-                    if([moveValidation isValidArray:array1 length:(int)array1.count secondArray:array2 length:(int)array2.count index:index]){
-                        [array1 addObject:[NSString stringWithString:container]];
-                        [stateTracker recordCurrentStateOfArray:array1 length:(int)array1.count andArray:array2 length:(int)array2.count];
-                        [self.printHandler printArray:array1 andArray:array2 andBoat:container direction:index];
+                    if([moveValidation isValidArray:self.array1 length:self.array1.count secondArray:self.array2 length:self.array2.count index:index]){
+                        [self.array1 addObject:[NSString stringWithString:self.container]];
+                        [stateTracker recordCurrentStateOfArray:self.array1 andArray:self.array2];
+                        [printHandler printArray:self.array1 andArray:self.array2 andBoat:self.container direction:index];
                         
                         break;
                     }
                     else{
-                        [stateTracker reloadWorkingStateOfArray:array1 andArray:array2];
+                        [stateTracker reloadWorkingStateOfArray:self.array1 andArray:self.array2];
                         continue;
                     }
                     
@@ -113,12 +108,11 @@
             }
         }
         
-        index = (index+1)%2;
-        usleep(3e5);
+        
         
     }
     
-}
+
 
 
 

@@ -13,7 +13,10 @@
 #import "ViewController.h"
 
 @interface GameLogic : NSObject
-@property (nonatomic) Printer *printHandler;
+
+@property (nonatomic) NSString *container;
+@property (nonatomic) NSMutableArray *array1;
+@property (nonatomic) NSMutableArray *array2;
 -(instancetype)initGame;
--(void)play;
+-(void)playWithIndex:(int)index;
 @end

@@ -7,6 +7,8 @@
 //
 #import <UIKit/UIKit.h>
 #import "Printer.h"
+#import "GameLogic.h"
+#import "SnapShot.h"
 
 @implementation Printer
 -(void) printArray:(NSMutableArray *)array1  andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction{
@@ -92,22 +94,22 @@
 }
 
 
-+(void)updatedisplay:(NSMutableArray *)array1 andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction{
-//    for (UILabel *c in _aViewController.labelsForArray1 ){
-//        c.text = @"";
-//    }
-//    for (UILabel *c in _aViewController.labelsForArray2 ){
-//        c.text = @"";
-//    }
-
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        
-        //Do any updates to your label here
-        boatLabel.text = @"";
-        
-    }];
-}
-    
+//+(void)updatedisplay:(NSMutableArray *)array1 andArray:(NSMutableArray *)array2 andBoat:(NSString *)container direction:(int)direction{
+////    for (UILabel *c in _aViewController.labelsForArray1 ){
+////        c.text = @"";
+////    }
+////    for (UILabel *c in _aViewController.labelsForArray2 ){
+////        c.text = @"";
+////    }
+//
+//    
+//    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//        
+//        //Do any updates to your label here
+//        boatLabel.text = @"";
+//        
+//    }];
+//}
+//    
 
 @end

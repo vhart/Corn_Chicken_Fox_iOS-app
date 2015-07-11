@@ -11,7 +11,7 @@
 
 
 @implementation ValidMove
--(BOOL) isValidArray:(NSMutableArray *)array1 length:(int)length1 secondArray:(NSMutableArray *)array2 length:(int)length2 index:(int)index{
+-(BOOL) isValidArray:(NSMutableArray *)array1 length:(NSUInteger)length1 secondArray:(NSMutableArray *)array2 length:(NSUInteger)length2 index:(int)index{
     
     if(((length1 == 0 || length1==1)&& index==1) || ((length2==0 || length2==1) && index==0)){
         return YES;
@@ -31,7 +31,9 @@
                     }
                 }
             }
-        
+            
+            break;
+            
         }
             
         case 0:{
@@ -42,14 +44,15 @@
                     }
                 }
             }
-
+            break;
             
         }
-            break;
+            
+            
             
         default:
             return YES;
-            break;
+            
     }
     
     return YES;

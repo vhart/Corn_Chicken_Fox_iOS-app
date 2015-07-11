@@ -15,7 +15,7 @@
 
 @property (nonatomic) int recordCurrentIndex;
 
--(void) recordCurrentStateOfArray:(NSMutableArray *)array1 length:(int)length1 andArray:(NSMutableArray *)array2 length:(int)length2;
+-(void) recordCurrentStateOfArray:(NSMutableArray *)array1 andArray:(NSMutableArray *)array2;
 -(void) reloadWorkingStateOfArray:(NSMutableArray *)array1 andArray:(NSMutableArray *)array2;
 -(void) wipe;
 

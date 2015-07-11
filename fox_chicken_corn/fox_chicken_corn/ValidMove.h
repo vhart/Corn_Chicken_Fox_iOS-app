@@ -10,5 +10,5 @@
 
 @interface ValidMove : NSObject
 
--(BOOL) isValidArray:(NSMutableArray *)array1 length:(int)length1 secondArray:(NSMutableArray *) array2 length: (int)length2 index:(int)index;
+-(BOOL) isValidArray:(NSMutableArray *)array1 length:(NSUInteger)length1 secondArray:(NSMutableArray *) array2 length: (NSUInteger)length2 index:(int)index;
 @end
